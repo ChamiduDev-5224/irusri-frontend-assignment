@@ -13,7 +13,12 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     loggedInfo: (state, action) => {
-      state.userInfo = action.payload;
+        let obj = {
+            email:action.payload.email,
+            id:action.payload.id,
+            name:action.payload.name
+        }
+      state.userInfo = obj;      
     },
   
   },
