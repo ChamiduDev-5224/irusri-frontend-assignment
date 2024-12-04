@@ -10,7 +10,7 @@ IRUSRI Group Frontend Developer: Crafting an Innovative and Scalable E-Commerce 
 - Products adding and removing from the cart
 - Adding cupons code and checkout
 - All modules divided by componenets 
-- Extensible for adding libraries like Tailwind CSS, Redux, MUI.
+- Extensible for adding libraries like Tailwind CSS, Redux, MUI, Formik, Yup, React-toastify.
 
 ## 📋 Prerequisites
 
@@ -59,4 +59,25 @@ Using yarn
 yarn dev
 ```
 By default, the app will run at http://localhost:5173.
+
+
+### Some screenshot
+## 1: Login page
+
+ ![screencapture-localhost-5173-login-2024-12-04-18_22_05](https://github.com/user-attachments/assets/8ad5777f-01f6-4616-993f-6c76f1c26639)
+
+## 2: Signup page
+![screencapture-localhost-5173-signup-2024-12-04-18_31_37](https://github.com/user-attachments/assets/1c6222ef-a6c0-42a1-8368-513720ba2eb4)
+
+## 3: Home page
+![screencapture-localhost-5173-2024-12-04-18_21_35](https://github.com/user-attachments/assets/4b552302-597f-4f58-9d1d-1d08938ee4d6)
+
+## 4: Products selecting page
+![screencapture-localhost-5173-product-newArrival-2-2024-12-04-18_22_55](https://github.com/user-attachments/assets/2794b082-6c90-4351-acb7-77067409b6dd)
+
+## 5: Shopping cart
+![screencapture-localhost-5173-shop-cart-2024-12-04-18_40_59](https://github.com/user-attachments/assets/6e982567-cd99-4530-a267-5ad2d24d10da)
+
+## 📜 License
+This project is licensed under the MIT License. Feel free to use and modify it as per your needs.
 
