@@ -1,8 +1,9 @@
 import { Fade, Menu } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { numberFormat } from "../../utility/commonScript.js";
+import { numberFormat,getSizeById } from "../../utility/commonScript.js";
 import { removeItem } from "../../redux/Slices/CartSlice.js";
+import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -47,7 +48,6 @@ const Header: React.FC = () => {
           <span className="pointer ml-10 hidden lg:block">Shop</span>
           <img
             src="/icons/arrowDown.svg"
-            onMouseEnter={() => setIsHovered(true)}
             className="pointer hidden lg:block"
             width={16}
             height={16}
@@ -140,7 +140,7 @@ const Header: React.FC = () => {
                               {val.qty} x {numberFormat(val.product.price)} LKR
                             </p>
                             <div>
-                              <p>Size: M</p>
+                              <p>Size: {getSizeById(val.size)}</p>
                             </div>
                           </td>
                           <td className="mx-3">
@@ -164,9 +164,11 @@ const Header: React.FC = () => {
                   </tbody>
                 </table>
               </div>
+              <Link to={'../shop-cart'}>
               <button className="bg-transparent text-black border-[2px] my-auto mx-auto p-3 w-full rounded-md">
                 View Cart
               </button>
+              </Link>
               <button className="bg-black text-white my-auto mx-auto p-3 w-full rounded-md">
                 Checkout
               </button>

@@ -1,3 +1,5 @@
+import {urls} from '../utility/Url'
+
 //Number Format
 export const numberFormat = (number, decimals, dec_point, thousands_sep) => {
   number = (number + "").replace(/[^0-9+\-Ee.]/g, "");
@@ -21,3 +23,10 @@ export const numberFormat = (number, decimals, dec_point, thousands_sep) => {
   }
   return s.join(dec);
 };
+
+
+export const getSizeById =(id)=>{
+ let foundObj =  urls.sizes.find((val)=>val.id==id)
+
+ if(foundObj) return foundObj.size
+}
