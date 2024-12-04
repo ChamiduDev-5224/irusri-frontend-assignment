@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import { singupValidationSchema } from "../../utility/Validate.js";
-import { userInfo } from "../../utility//login-info.js";
-
+import { userInfo } from "../../utility/login-info.js";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 
@@ -25,13 +24,13 @@ export const Signup: React.FC = () => {
         let res = addNewUser(values);
         setIsLoading(false);
         if (res) {
-          return toast("New user registration successful!");
+          return toast.success("New user registration successful!");
         }
 
-        toast("Registration failed! Please try again or contact support.");
+        toast.error("Registration failed! Please try again or contact support.");
       } catch (error) {
         setIsLoading(false);
-        toast("Error occured! contact support.");
+        toast.error("Error occured! contact support.");
       }
     },
   });
@@ -96,6 +95,7 @@ export const Signup: React.FC = () => {
             type="password"
             id="password"
             name="password"
+            placeholder="Password"
             className="login-input"
             onChange={formik.handleChange}
             value={formik.values.password}

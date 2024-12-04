@@ -29,15 +29,15 @@ const Login: React.FC = () => {
           // store data localstorage
           dispatch(loggedInfo(res.data))
           nav('/');
-          toast("Login successful! Welcome back!");
+          toast.success("Login successful! Welcome back!");
           return;
         }
         //unsucess
-        toast(
+        toast.error(
           "Login failed! Please check your email and password and try again."
         );
       } catch (error) {
-        toast("Error occured!");
+        toast.error("Error occured!");
       }
     },
   });
