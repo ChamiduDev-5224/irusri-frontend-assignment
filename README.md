@@ -1,50 +1,62 @@
-# React + TypeScript + Vite
+# ISUSRI E-commerce
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+IRUSRI Group Frontend Developer: Crafting an Innovative and Scalable E-Commerce Application with React.js and Vite for Seamless User Experiences and Performance Optimization.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Signup and login feature
+- Modern UI with home page animation
+- Products selection and add to cart realtime
+- Products adding and removing from the cart
+- Adding cupons code and checkout
+- All modules divided by componenets 
+- Extensible for adding libraries like Tailwind CSS, Redux, MUI.
 
-## Expanding the ESLint configuration
+## 📋 Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Before you start, ensure you have the following installed on your system:
 
-- Configure the top-level `parserOptions` property like this:
+1. **Node.js** (v14 or later) – [Download here](https://nodejs.org/)
+2. **npm** (v6 or later) or **yarn** (v1.22 or later) – Comes with Node.js
+3. A **code editor** like [VS Code](https://code.visualstudio.com/)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 📂 Getting Started
+
+Follow these steps to set up and run the project locally.
+
+### Step 1: Clone the Repository
+
+First, clone this repository to your local machine.
+
+```bash
+git clone <repository_url>
+cd <project_name>
+```
+### Step 2: Install Dependencies
+
+Install the required dependencies using npm or yarn.
+
+Using npm
+```bash
+npm install
+```
+Using yarn
+```bash
+yarn install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Step 3: Start the Development Server
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Run the development server and start building your application.
+Using npm
+```bash
+npm run dev
 ```
+Using yarn
+```bash
+yarn dev
+```
+By default, the app will run at http://localhost:5173.
+
