@@ -25,7 +25,7 @@ export const NewArrivalProduct: React.FC = () => {
   let dispatch = useDispatch();
 
   useEffect(() => {
-    let proObj = urls.arrivalInfo.find((val) => val.id == parseInt(id));
+    let proObj = urls.arrivalInfo.find((val:any) => val.id == parseInt(id));
     setProduct(proObj);
   }, [urls.arrivalInfo, id]);
 
@@ -48,7 +48,7 @@ export const NewArrivalProduct: React.FC = () => {
       {!product && (
         <Backdrop
           sx={(theme) => ({ color: "#fff", zIndex: theme.zIndex.drawer + 1 })}
-          open={isLoading}
+          open={false}
         >
           <CircularProgress color="inherit" />
         </Backdrop>
@@ -105,7 +105,7 @@ export const NewArrivalProduct: React.FC = () => {
             <p>{product.description}</p>
             <h3 className="font-extrabold mt-2">Color</h3>
             <div className="flxr gap-2">
-              {urls.colors.map((val, index) => (
+              {urls.colors.map((val:any, index:number) => (
                 <div
                   className={`${
                     val?.color

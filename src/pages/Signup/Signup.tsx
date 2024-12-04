@@ -38,7 +38,7 @@ export const Signup: React.FC = () => {
 
   // adodd new user
   const addNewUser = (info: object): object => {
-    let id: number = userInfo[userInfo.length - 1].id;
+    let id: number = userInfo[userInfo.length - 1]?.id;
     info.id = id + 1;
     userInfo.push(info);
     return info;

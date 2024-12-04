@@ -7,6 +7,7 @@ export interface ProductInterface {
         price: number;
         url: string;
         rate: number;
+        description:string
       }
       
       export interface LoginResponse {
