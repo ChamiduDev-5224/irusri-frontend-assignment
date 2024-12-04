@@ -15,3 +15,6 @@ export interface productMapperInterface{
         array:Array,
         type:string
 }
+export interface breadcrumbInterface{
+        array:Array,
+}
