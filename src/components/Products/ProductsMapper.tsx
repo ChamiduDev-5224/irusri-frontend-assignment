@@ -1,13 +1,13 @@
 import React from "react";
-import { productMapperInterface } from "../../utility/interface";
+import { ProductMapperInterface } from "../../utility/interface";
 import { numberFormat } from "../../utility/commonScript.js";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-const ProductsMapper: React.FC<productMapperInterface> = ({ array, type }) => {
+
+const ProductsMapper: React.FC<ProductMapperInterface> = ({ array, type }) => {
   const nav = useNavigate();
   return (
     <div id="card-row" className="flxc gap-5 md:flxr justify-between px-16">
-      {array?.map((val, index) => {
+      {array?.map((val:any, index:number) => {
         return (
           <div
             key={index}

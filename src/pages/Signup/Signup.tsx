@@ -24,6 +24,7 @@ export const Signup: React.FC = () => {
         let res = addNewUser(values);
         setIsLoading(false);
         if (res) {
+          resetForm();
           return toast.success("New user registration successful!");
         }
 

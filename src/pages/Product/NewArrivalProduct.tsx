@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import { urls } from "../../utility/Url.js";
-import { productInterface } from "../../utility/interface.js";
+import { ProductInterface } from "../../utility/interface.js";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { numberFormat } from "../../utility/commonScript.js";
@@ -15,7 +15,7 @@ import { cartInfo } from "../../redux/Slices/CartSlice.js";
 import { useDispatch } from "react-redux";
 import { checkProduct } from "../../utility/Validate.js";
 export const NewArrivalProduct: React.FC = () => {
-  const [product, setProduct] = useState<productInterface>({});
+  const [product, setProduct] = useState<ProductInterface>({});
   const [color, setColor] = useState<number>(0);
   const [size, setSize] = useState<number>(0);
   const [qtyCount, setQtyCount] = useState<number>(0);

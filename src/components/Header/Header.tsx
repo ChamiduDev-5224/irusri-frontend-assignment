@@ -1,4 +1,3 @@
-import { Fade, Menu } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { numberFormat, getSizeById } from "../../utility/commonScript.js";
@@ -44,10 +43,9 @@ const Header: React.FC = () => {
   };
 
   //logout
-  const onLogOut=()=>{
-    dispatch(loggedInfo({}))
-
-  }
+  const onLogOut = () => {
+    dispatch(loggedInfo({}));
+  };
   return (
     <div>
       <div className="flxr p-6 justify-between bg-animate">
@@ -63,7 +61,9 @@ const Header: React.FC = () => {
           <p className="text-black font-extrabold uppercase text-2xl ml-4">
             ECOM.CO
           </p>
+          <Link to={"/"}>
             <span className="pointer ml-10 hidden lg:block">Shop</span>
+          </Link>
           <img
             src="/icons/arrowDown.svg"
             className="pointer hidden lg:block"
@@ -79,7 +79,7 @@ const Header: React.FC = () => {
             New Arrivals
           </span>
           <span className="pointer hover:text-violet-300 hidden lg:block ml-2">
-            Brands
+            Top Sales
           </span>
         </div>
 
@@ -143,7 +143,7 @@ const Header: React.FC = () => {
                         marginLeft: "12px",
                       }}
                     >
-                      {cartInfo.map((val, index) => (
+                      {cartInfo.map((val: any, index: number) => (
                         <tr key={val.id} className="flxr gap-5 border-b-2 py-4">
                           <td>
                             <img
@@ -193,9 +193,12 @@ const Header: React.FC = () => {
                     : "Login there"}
                 </p>
                 {isUserLogged ? (
-                    <button className="bg-black text-white my-auto mx-auto p-3 w-full rounded-md" onClick={onLogOut}>
-                      Logout
-                    </button>
+                  <button
+                    className="bg-black text-white my-auto mx-auto p-3 w-full rounded-md"
+                    onClick={onLogOut}
+                  >
+                    Logout
+                  </button>
                 ) : (
                   <Link to="/login">
                     <button className="bg-black text-white my-auto mx-auto p-3 w-full rounded-md">

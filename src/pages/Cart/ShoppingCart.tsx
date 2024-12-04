@@ -39,12 +39,15 @@ const ShoppingCart: React.FC = () => {
             <tbody>
               {cartInfo?.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="text-2xl text-center py-2 bg-red-200 text-red-600">
+                  <td
+                    colSpan={5}
+                    className="text-2xl text-center py-2 bg-red-200 text-red-600"
+                  >
                     Cart Empty
                   </td>
                 </tr>
               )}{" "}
-              {cartInfo?.map((val, index) => {
+              {cartInfo?.map((val: any, index: number) => {
                 subTotal = subTotal + val.product.price * val.qty;
                 return (
                   <tr key={index} className="border-b-2 border-gray-100">
@@ -68,21 +71,11 @@ const ShoppingCart: React.FC = () => {
                     </td>
                     <td className="px-12">
                       <div className="flxr border-[1px] border-black gap-2 rounded-lg items-baseline">
-                        <button
-                          className="px-3 py-2 hover:bg-slate-100 rounded-l-lg active:bg-slate-200"
-                          onClick={() => {
-                            setQtyCount(qtyCount > 0 ? qtyCount - 1 : 0);
-                          }}
-                        >
+                        <button className="px-3 py-2 hover:bg-slate-100 rounded-l-lg active:bg-slate-200">
                           -
                         </button>
                         <span className="w-3 text-center">{val.qty}</span>
-                        <button
-                          className="px-3 py-2 hover:bg-slate-100 rounded-r-lg active:bg-slate-200"
-                          onClick={() => {
-                            setQtyCount(qtyCount + 1);
-                          }}
-                        >
+                        <button className="px-3 py-2 hover:bg-slate-100 rounded-r-lg active:bg-slate-200">
                           +
                         </button>
                       </div>
@@ -115,16 +108,15 @@ const ShoppingCart: React.FC = () => {
           <span className="text-sm py-4">Enter Discount Code</span>
           <div className="flxr border-[1px] border-black rounded-lg -z-20 items-baseline ">
             <input type="text" className="w-full py-2 rounded-lg pl-4" />
-            <button
-              className=" py-2 bg-black text-white w-1/5 rounded-r-lg active:bg-slate-900"
-              onClick={() => {
-                setQtyCount(qtyCount + 1);
-              }}
-            >
+            <button className=" py-2 bg-black text-white w-1/5 rounded-r-lg active:bg-slate-900">
               +
             </button>
           </div>
-          <div className={`flex flex-row justify-between my-4 mx-6 border-b-2 ${subTotal==0?'hidden':''}`}>
+          <div
+            className={`flex flex-row justify-between my-4 mx-6 border-b-2 ${
+              subTotal == 0 ? "hidden" : ""
+            }`}
+          >
             <span className="py-4">Delivery Charge</span>
             <span className="py-4">{numberFormat(deliveryCost)} LKR</span>
           </div>
@@ -132,10 +124,12 @@ const ShoppingCart: React.FC = () => {
           <div className="flex flex-row justify-between my-5 mx-6">
             <p className=" text-lg font-bold py-4">Grand Total</p>
             <p className="text-lg font-bold py-4">
-              {numberFormat(subTotal==0?0:deliveryCost + subTotal)} LKR
+              {numberFormat(subTotal == 0 ? 0 : deliveryCost + subTotal)} LKR
             </p>
           </div>
-          <button className="text-center w-full rounded-lg py-2 px-10 bg-black active:opacity-90 text-white">Checkout</button>
+          <button className="text-center w-full rounded-lg py-2 px-10 bg-black active:opacity-90 text-white">
+            Checkout
+          </button>
         </div>
       </div>
       <Footer />

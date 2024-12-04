@@ -11,7 +11,7 @@ export const cartSlice = createSlice({
     cartInfo: (state, action) => {
       
       // Check if the item already exists in the cart
-      const exist = state.cart.find((vl) => vl.id === action.payload.id && vl.color==action.payload.color && vl.size==action.payload.size);
+      const exist = state.cart.find((vl:any) => vl.id === action.payload.id && vl.color==action.payload.color && vl.size==action.payload.size);
        action.payload.cartId=state.cart[state.cart.length-1]?.cartId>0?state.cart[state.cart.length-1]?.cartId+1:0+1;
 
       if (!exist) {
@@ -21,7 +21,7 @@ export const cartSlice = createSlice({
       }
     },
     removeItem: (state, action) => {
-      const newstate = state.cart.filter((val) => val.cartId !== action.payload);
+      const newstate = state.cart.filter((val:any) => val.cartId !== action.payload);
       state.cart = newstate;
     },
   },

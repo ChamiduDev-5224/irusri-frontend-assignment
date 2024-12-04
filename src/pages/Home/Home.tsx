@@ -211,7 +211,7 @@ export const Home: React.FC = () => {
           </div>
         </div>
         <div className="flxc lg:flxr gap-4 m-10">
-          {urls.cutomerFeedback.map((val, index) => {
+          {urls.cutomerFeedback.map((val:any, index:number) => {
             return (
               <div
                 key={index}

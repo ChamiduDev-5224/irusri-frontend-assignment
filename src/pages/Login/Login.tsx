@@ -1,20 +1,19 @@
 import React from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { loginValidationSchema } from "../../utility/Validate.js";
 import { ToastContainer, toast } from "react-toastify";
 import { userInfo } from "../../utility/login-info.js";
 import { useDispatch } from "react-redux";
 import { loggedInfo } from "../../redux/Slices/AuthSlice.js";
-interface FormState {
-  email: string;
-  password: string;
-}
+import { LoginResponse, FormikValues } from "../../utility/interface.js";
+
 const Login: React.FC = () => {
   const dispatch = useDispatch();
   const nav = useNavigate();
-  //validation schema
-  const formik = useFormik({
+
+  // Define the formik instance with types
+  const formik = useFormik<FormikValues>({
     initialValues: {
       email: "",
       password: "",
@@ -22,31 +21,34 @@ const Login: React.FC = () => {
     validationSchema: loginValidationSchema,
     onSubmit: (values, { resetForm }) => {
       try {
-        //check user information
-        let res = checkLogin(values);
-        //success
-        if (res.sts == 1) {
-          // store data localstorage
-          dispatch(loggedInfo(res.data))
-          nav('/');
+        // Check user information
+        const res = checkLogin(values);
+
+        // Success
+        if (res.sts === 1) {
+          // Store data in local storage and navigate
+          dispatch(loggedInfo(res.data));
+          nav("/");
           toast.success("Login successful! Welcome back!");
+          resetForm();
           return;
         }
-        //unsucess
+
+        // Failure
         toast.error(
           "Login failed! Please check your email and password and try again."
         );
       } catch (error) {
-        toast.error("Error occured!");
+        toast.error("Error occurred!");
       }
     },
   });
 
-  // check user auth
-  const checkLogin = (info: object): object => {
+  // Check user auth
+  const checkLogin = (info: FormikValues): LoginResponse => {
     const { email, password } = info;
     const foundUser = userInfo.find(
-      (val) => val.email == email && val.password == password
+      (val: any) => val.email === email && val.password === password
     );
 
     if (foundUser) {
@@ -62,7 +64,7 @@ const Login: React.FC = () => {
         alt="login"
         className="h-screen hidden lg:block"
       />
-      <div className="flex flex-col my-16 md:my-28 mx-auto  lg:mx-auto">
+      <div className="flex flex-col my-16 md:my-28 mx-auto lg:mx-auto">
         <h2 className="text-4xl font-bold">Welcome 👋</h2>
         <p className="text-brand-bg-main">Please login here</p>
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>

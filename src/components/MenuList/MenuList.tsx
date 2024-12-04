@@ -1,11 +1,6 @@
 import React from "react";
 import { Menu, Fade } from "@mui/material";
-interface CommonMenuProps {
-  anchorEl: HTMLElement | null;
-  open: boolean;
-  handleClose: () => void;
-  children: React.ReactNode;
-}
+
 export const MenuList: React.FC<CommonMenuProps> = ({
   anchorEl,
   open,
