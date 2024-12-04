@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import { urls } from "../../utility/Url.js";
 import Rates from "../../components/Rates/Rates.tsx";
 import { Footer } from "../../components/Footer/Footer.tsx";
-
+import { Link } from "react-router-dom";
+import ProductsMapper from "../../components/Products/ProductsMapper.tsx";
+import { useSelector } from "react-redux";
 export const Home: React.FC = () => {
+  const authInfo = useSelector((state: any) => state);
+  const [isUserLogged,setIsUserLogged] = useState<boolean>(false)
+
+  useEffect(()=>{
+    setIsUserLogged(authInfo.auth.userInfo.id>0?true:false)  
+  },[authInfo])
   return (
     <div>
-      <div className="top-offer bg-black text-center text-white py-1">
-        Sign up and get 20% off to your first order.{" "}
-        <span className="underline cursor-pointer hover:text-gray-300">
-          Sign Up Now
-        </span>
+      <div className={`top-offer bg-black text-center text-white py-1 ${isUserLogged?'hidden':''}`}>
+        Sign up and get 20% off to your first order.
+        <Link to={"/signup"}>
+          <span className="underline cursor-pointer hover:text-gray-300 ml-1">
+            Sign Up Now
+          </span>
+        </Link>
       </div>
       <Header />
-      <section className="bg-brand-bg-sub h-[80.5vh] flxc lg:flxr block">
+      <section className="bg-brand-bg-sub h-[80.5vh] flxc lg:flxr bg-animate">
         <div className="mt-16 px-10 lg:px-0">
           <p className="section-span">FIND CLOTHES</p>
           <p className="section-span">THAT MATCHES</p>
@@ -109,93 +119,27 @@ export const Home: React.FC = () => {
       {/*End brands */}
 
       {/* products */}
-      <section className="mb-12 mt-72 md:mt-96 lg:mt-0 block">
+      <section className="mb-12 mt-72 md:mt-96 lg:mt-0 bg-animate">
         <h1 className="uppercase font-extrabold text-5xl text-center my-10">
           New Arrivals
         </h1>
-        <div id="card-row" className="flxc gap-5 md:flxr justify-between px-16">
-          {urls.arrivalInfo.map((val, index) => {
-            return (
-              <div key={index}>
-                <div className="arivl-card">
-                  <img
-                    src={`${val.url}`}
-                    className={
-                      index == 1
-                        ? "w-56 my-auto mx-auto"
-                        : "w-60 my-auto mx-auto"
-                    }
-                    width={100}
-                    height={30}
-                    alt={val.alt}
-                  />
-                </div>
-                <p className="text-sm font-semibold my-1">{val.name}</p>
-                <div>
-                  <span className="font-bold my-1">{val.price}</span>
-                  {val.isDiscount && (
-                    <>
-                      <span className="font-bold my-1 mx-2 text-brand-bg-main line-through">
-                        {val.oldPrice}
-                      </span>
-                      <span className="bg-brand-bg-lightRed bg-opacity-40 text-brand-font-discount py-1 px-4 rounded-xl text-[10px]">
-                        {val.discount}
-                      </span>
-                    </>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <ProductsMapper array={urls.arrivalInfo} type="newArrival" />
+
         <button className="bg-transparent rounded-full py-2 px-10 my-auto mx-auto border-2 mt-6 flxr justify-center hover:border-blue-100 hover:drop-shadow-2xl">
           View All
         </button>
       </section>
       {/* End products */}
 
-      <div className="bg-brand-bg-main opacity-25 h-[2px] rounded-full mx-24 block" />
+      <div className="bg-brand-bg-main opacity-25 h-[2px] rounded-full mx-24 bg-animate" />
 
       {/* products */}
-      <section className="mb-12 block">
+      <section className="mb-12 bg-animate">
         <h1 className="uppercase font-extrabold text-5xl text-center my-10">
           top selling
         </h1>
-        <div id="card-row" className="flxc gap-5 md:flxr justify-between px-16">
-          {urls.topSaleInfo.map((val, index) => {
-            return (
-              <div key={index}>
-                <div className="arivl-card">
-                  <img
-                    src={`${val.url}`}
-                    className={
-                      index == 1
-                        ? "w-52 my-auto mx-auto"
-                        : "w-60 my-auto mx-auto"
-                    }
-                    width={100}
-                    height={30}
-                    alt={val.alt}
-                  />
-                </div>
-                <p className="text-sm font-semibold my-1">{val.name}</p>
-                <div>
-                  <span className="font-bold my-1">{val.price}</span>
-                  {val.isDiscount && (
-                    <>
-                      <span className="font-bold my-1 mx-2 text-brand-bg-main line-through">
-                        {val.oldPrice}
-                      </span>
-                      <span className="bg-brand-bg-lightRed bg-opacity-40 text-brand-font-discount py-1 px-4 rounded-xl text-[10px]">
-                        {val.discount}
-                      </span>
-                    </>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <ProductsMapper array={urls.topSaleInfo} type="topselling" />
+
         <button className="bg-transparent rounded-full py-2 px-10 my-auto mx-auto border-2 mt-6 flxr justify-center hover:border-blue-100 hover:drop-shadow-2xl">
           View All
         </button>
@@ -203,7 +147,7 @@ export const Home: React.FC = () => {
       {/* End products */}
 
       {/* Browse By products */}
-      <div className="rounded-xl bg-brand-bg-main my-20 mx-12 lg:mx-24 bg-opacity-30 block">
+      <div className="rounded-xl bg-brand-bg-main my-20 mx-12 lg:mx-24 bg-opacity-30 bg-animate">
         <h1 className="uppercase font-extrabold text-center pt-12  text-4xl lg:text-5xl">
           BROWSE BY dress STYLE
         </h1>
@@ -246,7 +190,7 @@ export const Home: React.FC = () => {
       {/* End Browse By products */}
 
       {/* Happy Customers */}
-      <section className="block">
+      <section className="bg-animate">
         <div className="flxc md:flxr justify-between px-10 md:px-14 lg:px-20">
           <p className="text-5xl font-extrabold">OUR HAPPY CUSTOMERS</p>
           <div id="arrowIcons" className="flxr gap-2">
@@ -293,7 +237,7 @@ export const Home: React.FC = () => {
       </section>
       {/* End Happy Customers */}
 
-      <div className="bg-gray-100 pt-10 block">
+      <div className="bg-gray-100 pt-10 bg-animate">
         {/* Newsletter Section */}
         <div className="bg-black text-white py-10 px-6 text-center">
           <h2 className="text-3xl font-bold">
